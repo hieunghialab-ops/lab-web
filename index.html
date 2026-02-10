@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Test Của Tôi Trên Vercel</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a2e;
+            color: white;
+            transition: background-color 0.5s ease;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            max-width: 500px;
+            width: 90%;
+        }
+
+        #message {
+            font-size: 1.5rem;
+            font-weight: bold;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffd700;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            background: linear-gradient(45deg, #ff0099, #493240);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: bold;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        /* Hiệu ứng Emoji rơi */
+        .emoji {
+            position: absolute;
+            top: -50px;
+            font-size: 30px;
+            animation: fall linear forwards;
+            pointer-events: none; /* Để không che nút bấm */
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>🚀 Xin Chào Vercel!</h1>
+        <p>Đây là website đầu tiên tôi deploy thành công.</p>
+        
+        <div id="message">Sẵn sàng chưa?</div>
+        
+        <button onclick="bamNut()">🔥 Bấm vào đây đi!</button>
+    </div>
+
+    <script>
+        const messages = [
+            "Bạn thật tuyệt vời! 😎",
+            "Hôm nay là ngày may mắn của bạn! 🍀",
+            "Đừng quên uống nước nhé! 💧",
+            "Code chạy mượt quá đi! 🚀",
+            "Vercel + GitHub = Đỉnh cao! 🔥",
+            "Hãy cứ đam mê, hãy cứ dại khờ! ⭐",
+            "Tiền đầy túi, tình đầy tim! 💰",
+            "Sắp giàu to rồi bạn ơi! 💎"
+        ];
+
+        const colors = ["#1a1a2e", "#2d3436", "#2c3e50", "#341f97", "#000000", "#192a56"];
+        const emojis = ["⭐", "🚀", "🔥", "💎", "🍀", "😎", "🌈", "🎈", "🎉"];
+
+        function bamNut() {
+            // 1. Đổi câu chúc ngẫu nhiên
+            const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById('message').innerText = randomMsg;
+
+            // 2. Đổi màu nền ngẫu nhiên
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.backgroundColor = randomColor;
+
+            // 3. Tạo hiệu ứng mưa Emoji
+            createEmojiRain();
+        }
+
+        function createEmojiRain() {
+            for (let i = 0; i < 15; i++) {
+                const emoji = document.createElement('div');
+                emoji.classList.add('emoji');
+                emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                
+                // Vị trí ngẫu nhiên theo chiều ngang
+                emoji.style.left = Math.random() * 100 + "vw";
+                
+                // Tốc độ rơi ngẫu nhiên
+                emoji.style.animationDuration = (Math.random() * 2 + 2) + "s";
+                
+                document.body.appendChild(emoji);
+
+                // Xóa emoji sau khi rơi xong để không nặng máy
+                setTimeout(() => {
+                    emoji.remove();
+                }, 4000);
+            }
+        }
+    </script>
+</body>
+</html>
