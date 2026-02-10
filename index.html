@@ -1,156 +1,421 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Test Của Tôi Trên Vercel</title>
+    <title>CV - Tran Hieu Nghia</title>
+    <!-- Google Fonts for professional typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        body {
+        :root {
+            --primary-color: #0f172a; /* Navy Blue - Professional */
+            --accent-color: #2563eb; /* Blue - Action */
+            --text-color: #334155; /* Dark Grey - Text */
+            --light-text: #64748b; /* Lighter Grey - Meta info */
+            --bg-color: #f1f5f9;
+            --white: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1a1a2e;
-            color: white;
-            transition: background-color 0.5s ease;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent-color);
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Container - A4 Paper feel */
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: var(--white);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 8px;
             overflow: hidden;
+            position: relative;
+        }
+
+        /* Header Section */
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 40px;
             text-align: center;
         }
 
-        h1 {
-            font-size: 3rem;
+        header h1 {
+            font-size: 32px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-weight: 700;
         }
 
-        p {
-            font-size: 1.2rem;
-            color: #e0e0e0;
-            margin-bottom: 40px;
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 13px;
+            margin-top: 10px;
         }
 
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            max-width: 500px;
-            width: 90%;
-        }
-
-        #message {
-            font-size: 1.5rem;
-            font-weight: bold;
-            min-height: 80px;
+        .contact-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: #ffd700;
+            gap: 6px;
         }
 
-        button {
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            background: linear-gradient(45deg, #ff0099, #493240);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: transform 0.2s, box-shadow 0.2s;
+        .contact-item i {
+            color: #93c5fd;
+        }
+
+        .contact-item a {
+            color: var(--white);
+        }
+        
+        .contact-item a:hover {
+            text-decoration: underline;
+            color: #bfdbfe;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 40px;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--accent-color);
+        }
+
+        /* Experience & Projects */
+        .job-entry {
+            margin-bottom: 20px;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 5px;
+        }
+
+        .job-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .company-name {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        .duration {
+            font-style: italic;
+            color: var(--light-text);
+            font-size: 13px;
+        }
+
+        .job-details ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .job-details ul li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 6px;
+            color: #475569;
+        }
+
+        .job-details ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
             font-weight: bold;
         }
 
-        button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        /* Skills Section */
+        .skills-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
         }
 
-        button:active {
-            transform: scale(0.95);
+        .skill-item strong {
+            color: var(--primary-color);
+            display: inline-block;
+            width: 100px;
         }
 
-        /* Hiệu ứng Emoji rơi */
-        .emoji {
-            position: absolute;
-            top: -50px;
-            font-size: 30px;
-            animation: fall linear forwards;
-            pointer-events: none; /* Để không che nút bấm */
+        /* Action Buttons (Hide when printing) */
+        .actions {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 10px;
         }
 
-        @keyframes fall {
-            to {
-                transform: translateY(110vh) rotate(360deg);
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            border: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            background-color: var(--accent-color);
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: white;
+                -webkit-print-color-adjust: exact;
             }
+            .container {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                max-width: 100%;
+            }
+            .actions {
+                display: none;
+            }
+            header {
+                padding: 20px;
+            }
+            a {
+                text-decoration: none;
+                color: black;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header { padding: 30px 20px; }
+            .main-content { padding: 20px; }
+            .job-header { flex-direction: column; }
+            .contact-info { flex-direction: column; align-items: center; }
+            .skill-item strong { display: block; width: 100%; margin-bottom: 2px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h1>🚀 Xin Chào Vercel!</h1>
-        <p>Đây là website đầu tiên tôi deploy thành công.</p>
-        
-        <div id="message">Sẵn sàng chưa?</div>
-        
-        <button onclick="bamNut()">🔥 Bấm vào đây đi!</button>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>TRAN HIEU NGHIA</h1>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>81/41, 11 St, Tan Binh Dist, HCMC</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:hieunghiahcmus@gmail.com">hieunghiahcmus@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <a href="tel:0948567280">0948 567 280</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://linkedin.com/in/nghia-tran-970993267" target="_blank">LinkedIn Profile</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            
+            <!-- Summary -->
+            <section class="summary">
+                <div class="section-title">
+                    <i class="fas fa-user-circle"></i> Summary
+                </div>
+                <p>
+                    Electronics & Telecommunications graduate with nearly 2 years experience in IoT Network Operations at KDDI HCM GNOC. I specialize in network support and international customer service, including troubleshooting with global carriers. I’m ready to use my support and networking skills in a challenging role.
+                </p>
+            </section>
+
+            <!-- Experience -->
+            <section class="experience">
+                <div class="section-title">
+                    <i class="fas fa-briefcase"></i> Experience
+                </div>
+
+                <!-- KDDI Job 1 -->
+                <div class="job-entry">
+                    <div class="job-header">
+                        <div>
+                            <span class="job-title">IoT Network Operation Support</span>
+                            <span class="company-name"> | KDDI HCM GNOC</span>
+                        </div>
+                        <span class="duration">Jun 2024 - Apr 2025</span>
+                    </div>
+                    <div class="job-details">
+                        <ul>
+                            <li>Developed and implemented Standard Operating Procedures.</li>
+                            <li>Developed training materials and delivered sessions to onboard newcomers and enhance operator knowledge of procedures and new system.</li>
+                            <li>Managed customer service for efficient issue resolution and quality support.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- KDDI Job 2 -->
+                <div class="job-entry">
+                    <div class="job-header">
+                        <div>
+                            <span class="job-title">IoT Network Operator</span>
+                            <span class="company-name"> | KDDI HCM GNOC</span>
+                        </div>
+                        <span class="duration">Aug 2023 - Jun 2024</span>
+                    </div>
+                    <div class="job-details">
+                        <ul>
+                            <li>Handled international customer inquiries and support (Tier 1).</li>
+                            <li>Partnered with Global Carriers for technical troubleshooting.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- FPT Job -->
+                <div class="job-entry">
+                    <div class="job-header">
+                        <div>
+                            <span class="job-title">Electrical Intern</span>
+                            <span class="company-name"> | FPT TELECOM</span>
+                        </div>
+                        <span class="duration">Sep 2022 – Dec 2022</span>
+                    </div>
+                    <div class="job-details">
+                        <ul>
+                            <li>Gained practical experience with MongoDB.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects -->
+            <section class="projects">
+                <div class="section-title">
+                    <i class="fas fa-project-diagram"></i> Projects
+                </div>
+                <div class="job-entry">
+                    <div class="job-header">
+                        <span class="job-title">Graduation Thesis: Uplink NOMA System Research</span>
+                        <span class="duration">Mar 2023 – Jul 2023</span>
+                    </div>
+                    <p style="margin-bottom: 8px; font-style: italic; color: #475569;">
+                        Topic: Achieving covert communication in uplink NOMA system with channel inversion power control.
+                    </p>
+                    <div class="job-details">
+                        <ul>
+                            <li>Conducted research and numerical simulation to apply transmit channel inversion power control strategy for concealing information of secret users.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section class="education">
+                <div class="section-title">
+                    <i class="fas fa-graduation-cap"></i> Education
+                </div>
+                <div class="job-entry">
+                    <div class="job-header">
+                        <div>
+                            <span class="job-title">Bachelor of Electronics and Telecommunications</span>
+                            <br>
+                            <span class="company-name" style="font-weight:normal; color:#475569;">UNIVERSITY OF SCIENCE, HO CHI MINH CITY</span>
+                        </div>
+                        <span class="duration">Graduation: May 2024</span>
+                    </div>
+                    <p><strong>GPA:</strong> 7.9/10</p>
+                </div>
+            </section>
+
+            <!-- Skills -->
+            <section class="skills">
+                <div class="section-title">
+                    <i class="fas fa-tools"></i> Skills
+                </div>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <strong>Software:</strong> Microsoft Office, Power Query, Splunk (SPL), Cisco Packet Tracer.
+                    </div>
+                    <div class="skill-item">
+                        <strong>Networking:</strong> Basic computer networking knowledge, Cisco Packet Tracer configuration and troubleshooting (DHCP, Spanning-Tree,...).
+                    </div>
+                    <div class="skill-item">
+                        <strong>Databases:</strong> Basic knowledge MongoDB.
+                    </div>
+                    <div class="skill-item">
+                        <strong>Languages:</strong> English (LR: 775/990 · SW: 270/400), Vietnamese (Native).
+                    </div>
+                </div>
+            </section>
+
+        </div>
     </div>
 
-    <script>
-        const messages = [
-            "Bạn thật tuyệt vời! 😎",
-            "Hôm nay là ngày may mắn của bạn! 🍀",
-            "Đừng quên uống nước nhé! 💧",
-            "Code chạy mượt quá đi! 🚀",
-            "Vercel + GitHub = Đỉnh cao! 🔥",
-            "Hãy cứ đam mê, hãy cứ dại khờ! ⭐",
-            "Tiền đầy túi, tình đầy tim! 💰",
-            "Sắp giàu to rồi bạn ơi! 💎"
-        ];
+    <!-- Floating Print Button -->
+    <div class="actions">
+        <button class="btn" onclick="window.print()">
+            <i class="fas fa-file-pdf"></i> Print / Save PDF
+        </button>
+    </div>
 
-        const colors = ["#1a1a2e", "#2d3436", "#2c3e50", "#341f97", "#000000", "#192a56"];
-        const emojis = ["⭐", "🚀", "🔥", "💎", "🍀", "😎", "🌈", "🎈", "🎉"];
-
-        function bamNut() {
-            // 1. Đổi câu chúc ngẫu nhiên
-            const randomMsg = messages[Math.floor(Math.random() * messages.length)];
-            document.getElementById('message').innerText = randomMsg;
-
-            // 2. Đổi màu nền ngẫu nhiên
-            const randomColor = colors[Math.floor(Math.random() * colors.length)];
-            document.body.style.backgroundColor = randomColor;
-
-            // 3. Tạo hiệu ứng mưa Emoji
-            createEmojiRain();
-        }
-
-        function createEmojiRain() {
-            for (let i = 0; i < 15; i++) {
-                const emoji = document.createElement('div');
-                emoji.classList.add('emoji');
-                emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-                
-                // Vị trí ngẫu nhiên theo chiều ngang
-                emoji.style.left = Math.random() * 100 + "vw";
-                
-                // Tốc độ rơi ngẫu nhiên
-                emoji.style.animationDuration = (Math.random() * 2 + 2) + "s";
-                
-                document.body.appendChild(emoji);
-
-                // Xóa emoji sau khi rơi xong để không nặng máy
-                setTimeout(() => {
-                    emoji.remove();
-                }, 4000);
-            }
-        }
-    </script>
 </body>
 </html>
